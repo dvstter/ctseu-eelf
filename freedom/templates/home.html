@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/app.32e770dd.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/chunk-2a5e4bc4.ca4f56d8.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/chunk-vendors.97b05c2c.css">
+    <script type="text/javascript" src="/static/js/app.599aafe4.js"></script>
+    <script type="text/javascript" src="/static/js/chunk-vendors.98c206fb.js"></script>
+    <script type="text/javascript" src="/static/js/chunk-2a5e4bc4.fce45a6b.js"></script>
+    <style type="text/css">
+        div {
+            font-family: Roboto, Noto Sans S Chinese, PingFangSC, Microsoft YaHei, sans-serif;
+        }
+    </style>
+    <title>平安成电智慧通行</title>
+</head>
+<body>
+<div id="person">
+    <span>在这里输入你的个人信息：</span>
+    <input id="name" type="text" style="background: transparent; border: 1px solid red">
+    <select id="experience" style="background: transparent; border: 1px solid red">
+        <option value="研究生（硕士）">硕士</option>
+        <option value="研究生（博士）">博士</option>
+    </select>
+    <button id="confirm_button">确定</button>
+</div>
+<div data-v-e187dc34="" data-v-e3189a58="" class="pt-5 v-card v-card--flat v-sheet v-sheet--tile theme--light">
+    <div data-v-e187dc34="" class="v-card__title mb-3">
+        <div data-v-e187dc34="" class="layout justify-center">
+            <div data-v-e187dc34="" class="layout column justify-center">
+                <div data-v-e187dc34="" class="flex xs12">
+                    <div data-v-e187dc34="" style="text-align: justify;"><span data-v-e187dc34=""
+                                                                               style="font-weight: bold; color: green; font-size: 24px; width: 100%; display: inline-block;">研究生用户，入校授权有效！</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-v-e187dc34="" role="list" class="v-list theme--light">
+        <hr data-v-e187dc34="" class="v-divider theme--light"><!----><!----><!---->
+        <div data-v-e187dc34="" role="listitem">
+            <div class="v-list__tile theme--light">
+                <div data-v-e187dc34="" class="v-list__tile__action">
+                    <div data-v-e187dc34="" class="layout"><i data-v-e187dc34="" aria-hidden="true"
+                                                              class="v-icon mdi mdi-account theme--light"></i><span
+                            data-v-e187dc34="" class="ml-2 mr-2">用户姓名</span></div>
+                </div>
+                <div data-v-e187dc34="" class="v-list__tile__content">
+                    <div data-v-e187dc34="" class="v-list__tile__title">
+                        <div data-v-e187dc34="" class="layout justify-end"><h2 data-v-e187dc34="" id="name_showing">荣阳</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div><!----><!---->
+        <div data-v-e187dc34="" role="listitem">
+            <div class="v-list__tile theme--light">
+                <div data-v-e187dc34="" class="v-list__tile__action">
+                    <div data-v-e187dc34="" class="layout"><i data-v-e187dc34="" aria-hidden="true"
+                                                              class="v-icon mdi mdi-account-multiple theme--light"></i><span
+                            data-v-e187dc34="" class="ml-2 mr-2">登记类型</span></div>
+                </div>
+                <div data-v-e187dc34="" class="v-list__tile__content">
+                    <div data-v-e187dc34="" class="v-list__tile__title">
+                        <div data-v-e187dc34="" class="layout justify-end"><h2 data-v-e187dc34="" id="experience_showing">研究生（博士）</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div><!----><!---->
+        <div data-v-e187dc34="" role="listitem">
+            <div class="v-list__tile theme--light">
+                <div data-v-e187dc34="" class="v-list__tile__action">
+                    <div data-v-e187dc34="" class="layout"><i data-v-e187dc34="" aria-hidden="true"
+                                                              class="v-icon mdi mdi-timer theme--light"></i><span
+                            data-v-e187dc34="" class="ml-2 mr-2">登记时间</span></div>
+                </div>
+                <div data-v-e187dc34="" class="v-list__tile__content">
+                    <div data-v-e187dc34="" class="v-list__tile__title primary--text">
+                        <div data-v-e187dc34="" class="layout justify-end">
+                            <h3 data-v-e187dc34="" style="width: 180px;">
+                                <div data-v-43a209c8="" data-v-e187dc34="" class="wrap">
+                                    <div data-v-43a209c8="" id="box" style="transform: translateX(5px);">
+                                        <div data-v-43a209c8="" id="marquee">{{ time_str }}</div>
+                                        <div data-v-43a209c8="" id="copy">{{ time_str }}</div>
+                                    </div>
+                                    <div data-v-43a209c8="" id="node">{{ time_str }}</div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!----></div><!----><!---->
+    <div style="width: 100%; align-items: center; text-align: center;">
+        <button style="alignment: center; background-color: #00c4a4; color: white; text-align: center; padding: 5px; margin-top: 20px;"><div style="font-weight: bold">前往个人二维码</div></button>
+    </div>
+    <div data-v-e187dc34="" style="text-align: center; padding: 5px; margin-top: 20px;"><img data-v-e187dc34=""
+                                                                                             src="/static/images/logo.png"
+                                                                                             class="logo-bG9naW5JZD0yMDIwMTEyMTAzMTA"
+                                                                                             style="width: 50px; height: auto;">
+    </div>
+    <div data-v-e187dc34="" class="v-dialog__container" style="display: block;"></div>
+</div>
+<script type="text/javascript">
+    window.onload = function(){
+        var t = document.getElementById('node').getBoundingClientRect().width;
+        var e = document.getElementById('box');
+        var s = document.getElementById('copy');
+        var i = 0
+        setInterval(function () {i-=1, -i >= t && (i = 10), e.style.transform = "translateX("+i+"px)"}, 30);
+        document.getElementById('confirm_button').onclick = function () {
+            var name = document.getElementById('name').value;
+            var exp = document.getElementById('experience').value;
+            document.getElementById('name_showing').innerText = name;
+            document.getElementById('experience_showing').innerText = exp;
+            document.getElementById('person').style = 'display: none;';
+    };};
+</script>
+</body>
+</html>
