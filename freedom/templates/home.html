@@ -21,13 +21,17 @@
 </head>
 <body>
 <div id="person">
-    <span>在这里输入你的个人信息：</span>
+    <span>输入信息：</span>
     <input id="name" type="text" style="background: transparent; border: 1px solid red">
     <select id="experience" style="background: transparent; border: 1px solid red">
         <option value="研究生（硕士）">硕士</option>
         <option value="研究生（博士）">博士</option>
     </select>
-    <button id="confirm_button">确定</button>
+    <select id="direction" style="background: transparent; border: 1px solid red">
+        <option value="入校授权有效">入</option>
+        <option value="出校登记成功">出</option>
+    </select>
+    <button id="confirm_button" style="background: transparent; border: 1px solid red">确定</button>
 </div>
 <div data-v-e187dc34="" data-v-e3189a58="" class="pt-5 v-card v-card--flat v-sheet v-sheet--tile theme--light">
     <div data-v-e187dc34="" class="v-card__title mb-3">
@@ -35,7 +39,7 @@
             <div data-v-e187dc34="" class="layout column justify-center">
                 <div data-v-e187dc34="" class="flex xs12">
                     <div data-v-e187dc34="" style="text-align: justify;"><span data-v-e187dc34=""
-                                                                               style="font-weight: bold; color: green; font-size: 24px; width: 100%; display: inline-block;">研究生用户，入校授权有效！</span>
+                                                                               style="font-weight: bold; color: green; font-size: 24px; width: 100%; display: inline-block;">研究生用户，<span id="direction_showing">出校登记成功</span>！</span>
                     </div>
                 </div>
             </div>
@@ -96,7 +100,7 @@
             </div>
         </div><!----></div><!----><!---->
     <div style="width: 100%; align-items: center; text-align: center;">
-        <button style="alignment: center; background-color: #00c4a4; color: white; text-align: center; padding: 5px; margin-top: 20px;"><div style="font-weight: bold">前往个人二维码</div></button>
+        <button style="alignment: center; background-color: #00c4a4; color: white; text-align: center; padding: 5px; margin-top: 20px;" id="qr_button"><div style="font-weight: bold">前往个人二维码</div></button>
     </div>
     <div data-v-e187dc34="" style="text-align: center; padding: 5px; margin-top: 20px;"><img data-v-e187dc34=""
                                                                                              src="/static/images/logo.png"
@@ -107,18 +111,31 @@
 </div>
 <script type="text/javascript">
     window.onload = function(){
+        // making the time controller rotating
         var t = document.getElementById('node').getBoundingClientRect().width;
         var e = document.getElementById('box');
         var s = document.getElementById('copy');
         var i = 0
         setInterval(function () {i-=1, -i >= t && (i = 10), e.style.transform = "translateX("+i+"px)"}, 30);
+
+        // modify personal information
         document.getElementById('confirm_button').onclick = function () {
             var name = document.getElementById('name').value;
             var exp = document.getElementById('experience').value;
+            var direction = document.getElementById('direction').value;
+
             document.getElementById('name_showing').innerText = name;
             document.getElementById('experience_showing').innerText = exp;
+            document.getElementById('direction_showing').innerText = direction;
             document.getElementById('person').style = 'display: none;';
-    };};
+        };
+
+        // direct to the QR
+        document.getElementById('qr_button').onclick = function () {
+            //window.open('https://smaco2.uestc.edu.cn/wx/genQrcode');
+            window.location.href = "{% url 'qr' %}";
+        };
+    };
 </script>
 </body>
 </html>

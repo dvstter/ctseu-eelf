@@ -5,3 +5,6 @@ def home(request):
     t = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     context = {'time_str': t}
     return render(request, 'home.html', context)
+
+def qrcode(request):
+    return render(request, 'qr.html')
