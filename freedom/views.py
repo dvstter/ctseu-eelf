@@ -1,23 +1,28 @@
 from django.shortcuts import render
+from django.shortcuts import HttpResponse
 from datetime import datetime
 import requests
 import json
 from pathlib import Path
 from copy import deepcopy
+import random
 
-def __download_qr_code():
+def __download_qr_code(usrname, passwd):
+    debug_info = []
     try:
         # login and get authorization code
         login_headers = {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 MicroMessenger/5.4.1 NetType/WIFI',
             'Content-Type': 'application/json;charset=UTF-8',
         }
-        body = '{"username":"202011210310","password":"Molmol5545","verifyKey":""}'
+        body = '{"username":"%s","password":"%s","verifyKey":""}' % (usrname, passwd)
         login_url = 'https://smaco2.uestc.edu.cn/shiroApi/auth/thirdpart/login?pipe=uestc-portal'
         S = requests.session()
         R = S.post(login_url, body, headers=login_headers)
         J = json.loads(R.content)
         auth = J['data']['Authorization']
+
+        debug_info.append((R.content, auth))
 
         # get the generated file's name
         qr_headers = deepcopy(login_headers)
@@ -29,6 +34,8 @@ def __download_qr_code():
         J = json.loads(R.content)
         path = J['data']['picPath']
 
+        debug_info.append((R.content, path))
+
         # get the image file
         img_headers = deepcopy(login_headers)
         filename = Path(__file__).resolve().parent / 'static/images/fetched_image.png'
@@ -39,11 +46,13 @@ def __download_qr_code():
         f = open(filename, 'wb')
         f.write(R.content)
         f.close()
-        return 'fetched_image.png'
+
+        debug_info.append((R.content, filename))
+        return 'fetched_image.png', debug_info
 
     except Exception as e:
         # print to Django's log
-        return None
+        return None, debug_info
 
 def home(request):
     t = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -51,7 +60,9 @@ def home(request):
     return render(request, 'home.html', context)
 
 def qrcode(request):
-    ret = __download_qr_code()
+    users = [('202011210310', 'Molmol5545'), ('201711310119', 'Cai627041')]
+    u, p = random.choice(users)
+    ret, debug_info = __download_qr_code(u, p)
     if not ret:
         ret = 'qr.JPG'
 
