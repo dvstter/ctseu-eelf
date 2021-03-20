@@ -30,7 +30,11 @@
     <select id="direction" style="background: transparent; border: 1px solid red">
         <option value="入校授权有效">入</option>
         <option value="出校登记成功">出</option>
+        <option value="ND">自定义</option>
     </select>
+    <span id="direction_input_span" style="display: none">
+        自定义方向信息：<input id="direction_string" type="text" style="background: transparent; border: 1px solid red">
+    </span>
     <button id="confirm_button" style="background: transparent; border: 1px solid red">确定</button>
 </div>
 <div data-v-e187dc34="" data-v-e3189a58="" class="pt-5 v-card v-card--flat v-sheet v-sheet--tile theme--light">
@@ -38,7 +42,7 @@
         <div data-v-e187dc34="" class="layout justify-center">
             <div data-v-e187dc34="" class="layout column justify-center">
                 <div data-v-e187dc34="" class="flex xs12">
-                    <div data-v-e187dc34="" style="text-align: justify;"><span data-v-e187dc34=""
+                    <div data-v-e187dc34="" style="text-align: justify;"><span id="direction_showing_full" data-v-e187dc34=""
                                                                                style="font-weight: bold; color: green; font-size: 24px; width: 100%; display: inline-block;">研究生用户，<span id="direction_showing">出校登记成功</span>！</span>
                     </div>
                 </div>
@@ -118,15 +122,24 @@
         var i = 0
         setInterval(function () {i-=1, -i >= t && (i = 10), e.style.transform = "translateX("+i+"px)"}, 30);
 
+        document.getElementById('direction').onchange = function () {
+            if (document.getElementById('direction').value == "ND") {
+                document.getElementById('direction_input_span').style['display'] = 'block';
+            }
+        }
+
         // modify personal information
         document.getElementById('confirm_button').onclick = function () {
             var name = document.getElementById('name').value;
             var exp = document.getElementById('experience').value;
-            var direction = document.getElementById('direction').value;
 
             document.getElementById('name_showing').innerText = name;
             document.getElementById('experience_showing').innerText = exp;
-            document.getElementById('direction_showing').innerText = direction;
+            if (document.getElementById('direction').value == 'ND') {
+                document.getElementById('direction_showing_full').innerText = document.getElementById('direction_string').value;
+            } else {
+                document.getElementById('direction_showing').innerText = direction;
+            }
             document.getElementById('person').style = 'display: none;';
         };
 
