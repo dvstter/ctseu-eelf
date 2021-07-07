@@ -123,7 +123,7 @@
         setInterval(function () {i-=1, -i >= t && (i = 10), e.style.transform = "translateX("+i+"px)"}, 30);
 
         document.getElementById('direction').onchange = function () {
-            if (document.getElementById('direction').value == "ND") {
+            if (document.getElementById('direction').value === "ND") {
                 document.getElementById('direction_input_span').style['display'] = 'block';
             }
         }
@@ -135,7 +135,7 @@
 
             document.getElementById('name_showing').innerText = name;
             document.getElementById('experience_showing').innerText = exp;
-            if (document.getElementById('direction').value == 'ND') {
+            if (document.getElementById('direction').value === 'ND') {
                 document.getElementById('direction_showing_full').innerText = document.getElementById('direction_string').value;
             } else {
                 document.getElementById('direction_showing').innerText = document.getElementById('direction').value;
