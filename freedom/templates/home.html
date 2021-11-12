@@ -26,10 +26,12 @@
     <select id="experience" style="background: transparent; border: 1px solid red">
         <option value="研究生（硕士）">硕士</option>
         <option value="研究生（博士）">博士</option>
+        <option value="继教生">继教生</option>
     </select>
     <select id="direction" style="background: transparent; border: 1px solid red">
         <option value="入校授权有效">入</option>
         <option value="出校登记成功">出</option>
+        <option value="授权有效">单纯授权有效</option>
         <option value="ND">自定义</option>
     </select>
     <span id="direction_input_span" style="display: none">
@@ -43,7 +45,7 @@
             <div data-v-e187dc34="" class="layout column justify-center">
                 <div data-v-e187dc34="" class="flex xs12">
                     <div data-v-e187dc34="" style="text-align: justify;"><span id="direction_showing_full" data-v-e187dc34=""
-                                                                               style="font-weight: bold; color: green; font-size: 24px; width: 100%; display: inline-block;">研究生用户，<span id="direction_showing">出校登记成功</span>！</span>
+                                                                               style="font-weight: bold; color: green; font-size: 24px; width: 100%; display: inline-block;"><span id="title_showing">研究生</span>用户，<span id="direction_showing">出校登记成功</span>！</span>
                     </div>
                 </div>
             </div>
@@ -132,9 +134,12 @@
         document.getElementById('confirm_button').onclick = function () {
             var name = document.getElementById('name').value;
             var exp = document.getElementById('experience').value;
+            if (exp === '继教生') {
+                document.getElementById('title_showing').innerText = exp
+            }
 
-            document.getElementById('name_showing').innerText = name;
-            document.getElementById('experience_showing').innerText = exp;
+            document.getElementById('name_showing').innerText = name; // 修改用户姓名
+            document.getElementById('experience_showing').innerText = exp; // 修改登记类型
             if (document.getElementById('direction').value === 'ND') {
                 document.getElementById('direction_showing_full').innerText = document.getElementById('direction_string').value;
             } else {
