@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import home, qrcode
+from .views import home, qrcode, login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', home, name='home'),
+    path('', login, name='login'),
+    path('home', home, name='home'),
     path('qr', qrcode, name='qr')
 ]

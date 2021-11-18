@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
+from django.http import Http404
 from datetime import datetime
 import requests
 import json
 from pathlib import Path
 from copy import deepcopy
 import random
+import os
 
 def __download_qr_code(usrname, passwd):
     debug_info = []
@@ -54,10 +56,23 @@ def __download_qr_code(usrname, passwd):
         # print to Django's log
         return None, debug_info
 
+def login(request):
+    return render(request, 'login.html')
+
+def _check_password(password):
+    dir = os.path.dirname(os.path.abspath(__file__))
+    f = open(dir+'/passwd.txt')
+    x  = f.readline()
+    x  = x.strip()
+    return password == x
+
 def home(request):
-    t = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    context = {'time_str': t}
-    return render(request, 'home.html', context)
+    if _check_password(request.POST.get('passwd')):
+        t = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        context = {'time_str': t}
+        return render(request, 'home.html', context)
+    else:
+        return HttpResponse('Page not Found!')
 
 def qrcode(request):
     users = [('202011210310', 'Molmol5545'), ('201711310119', 'Cai627041')]
