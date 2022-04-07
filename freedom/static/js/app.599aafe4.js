@@ -17122,7 +17122,7 @@
         }, Dt = Ot, At = (n("034f"), Object(y["a"])(Dt, ot, st, !1, null, null, null)), Et = At.exports;
         x()(At, {VApp: k["a"]});
         var Lt = n("9483");
-        Object(Lt["a"])("".concat("/", "service-worker.js"), {
+        /*Object(Lt["a"])("".concat("/", "service-worker.js"), {
             ready: function () {
                 console.log("App is being served from cache by a service worker.\nFor more details, visit https://goo.gl/AFskqB")
             }, cached: function () {
@@ -17134,7 +17134,7 @@
             }, error: function (e) {
                 console.error("Error during service worker registration:", e)
             }
-        });
+        });*/
         n("d5e8"), n("5363");
         var Tt = n("bc3a"), It = n.n(Tt),
             St = new Set(["/shiroApi/auth", "/shiroApi/auth/thirdpart/portal/pipe/default", "/shiroApi/logout", "/shiroApi/version", "/shiroApi/selfInfo", "/shiroApi/auth/roles", "/passApi/pass/parkinglot/list", "/passApi/pass/controller/all"]);
