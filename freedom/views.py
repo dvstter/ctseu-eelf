@@ -75,7 +75,7 @@ def home(request):
         return HttpResponse('Page not Found!')
 
 def qrcode(request):
-    users = [('202011210310', 'Molmol5545'), ('201711310119', 'Cai627041')]
+    users = [('*******', 'pass_here'), ('*******', 'pass_here')]
     u, p = random.choice(users)
     ret, debug_info = __download_qr_code(u, p)
     if not ret:
